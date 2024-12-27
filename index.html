@@ -1,12 +1,333 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Hello GIT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chetan Prajapat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* Global variables */
+        :root {
+            --font-family: "Exo 2", serif;
+            --font-size: 12pt;
+            --header-font-size: 20pt;
+            --subheader-font-size: 14pt;
+            --section-heading-color: #000;
+            --text-color: #000000;
+            --background-color: #f9f9f9;
+            --contact-bg-color: #000;
+            --contact-text-color: #fff;
+            --button-bg-color: #50a253;
+            --button-hover-color: #fffcfc;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            font-size: var(--font-size);
+        }
+
+        .container {
+            width: 260mm;
+            margin: 0 auto;
+            background: #fff;
+            padding: 10mm;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: var(--header-font-size);
+            color: var(--section-heading-color);
+            font-family: var(--font-family);
+        }
+
+        /* Contact section styles */
+        .contact {
+            font-family: var(--font-family);
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            background-color: var(--contact-bg-color);
+            padding: 10px 0;
+            color: var(--contact-text-color);
+            margin-left: -10mm;
+            margin-right: -10mm;
+        }
+
+        .contact a {
+            color: var(--contact-text-color);
+            text-decoration: none;
+        }
+
+        .contact i {
+            margin-right: 8px;
+        }
+        
+        .section {
+            font-family: var(--font-family);
+            margin: 20px 0;
+        }
+
+        .section h2 {
+            font-family: var(--font-family);
+            color: var(--section-heading-color);
+            font-size: var(--subheader-font-size);
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--section-heading-color);
+            padding-bottom: 5px;
+        }
+
+        .section ul {
+            list-style: square;
+            padding: 0;
+            font-size: 11pt;
+            margin-left: 20px;
+        }
+
+        .section ul li {
+            margin: 8px 0;
+        }
+
+        .section ul ul {
+            list-style: circle;
+            margin-left: 30px;
+            font-size: var(--font-size)
+        }
+
+        .skills ul, .projects ul {
+            padding: 0;
+            font-size: var(--font-size)
+        }
+
+        .skills li, .projects li {
+            margin: 5px 0;
+        }
+
+        .education {
+            margin-bottom: 20px;
+        }
+
+        .education ul {
+            padding: 0;
+            font-size: var(--font-size)
+        }
+
+        .education ul li {
+            margin-bottom: 5px;
+        }
+
+        .education .school {
+            font-weight: bold;
+        }
+
+        .education .details {
+            font-size: 11pt;
+            color: #000000;
+        }
+
+        .education .time-period {
+            font-size: var(--font-size)
+            color: #000000;
+        }
+        .awards ul{
+            font-size: var(--font-size)
+        }
+        /* Sticky Download Button */
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 12px;
+            background: var(--button-bg-color);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9em;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .download-btn:hover {
+            background: var(--button-hover-color);
+        }
+
+        .entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .entry .details {
+            max-width: 75%;
+        }
+
+        .entry .date {
+            margin-top:20px;
+            text-align: right;
+            color: #000000;
+            font-size: 11pt;
+            white-space: nowrap;
+        }
+    </style>
+
+    <!-- Include Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
 </head>
 <body>
 
-<h1>Hello GIT</h1>
-<p>This is the first file in my new Git Repo.</p>
-<p>This is the first file in my new Git Repo.</p>
+<!-- Container with sections -->
+<div class="container" id="resume">
+    <div class="header">
+        <h1>CHETAN PRAJAPAT</h1>
+        
+    </div>
+
+    <!-- Contact section below the name, no padding from container -->
+    <div class="contact">
+        <p><i class="fas fa-envelope"></i><a href="mailto:prajapatchetan18@gmail.com">prajapatchetan18@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i>+91 – 9057024736</p>
+        <p><i class="fas fa-map-marker-alt"></i>Jaipur, India</p>
+        <p><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/prajapat-chetan" target="_blank">linkedin.com/in/prajapat-chetan</a></p>
+    </div>
+
+    <div class="section summary">
+        <h2>SUMMARY</h2>
+        <p>Having three years of experience in crafting scalable solutions, I am a proven collaborator eager to take on a challenging role. I aim to contribute my expertise in Python development to elevate innovative projects.</p>
+    </div>
+
+    <div class="section experience">
+        <h2>EXPERIENCE</h2>
+        <div class="entry">
+            <div class="details">
+                
+                <ul>
+                    <li><strong>System Engineer</strong> – Tata Consultancy Services, New Delhi</li>
+                    <ul>
+                        <li>Developed ETL scripts in Python to streamline data pipelines.</li>
+                        <li>Reduced manual effort by 95% using end-to-end RPA automation.</li>
+                        <li>Improved turnaround time by 75% and operational efficiency by 96.55%.</li>
+                        <li>Collaborated with clients to enhance business processes, reducing costs and maximizing revenue.</li>
+
+                    </ul>
+                    
+                </ul>
+            </div>
+            <div class="date"><strong>11/2021 - Present</strong></div>
+        </div>
+        
+    </div>
+
+    <div class="section skills">
+        <h2>SKILLS</h2>
+        <ul>
+            <li><strong>Programming Languages:</strong> C / C++, Java, PHP, Python, SQL</li>
+            <li><strong>Front-end technologies:</strong> HTML, CSS, Jquery, JSON, Bootstrap, API, Version Control/Git</li>
+            <li><strong>Framework:</strong> Tkinter, Django, Laravel</li>
+            <li><strong>Familiar Technologies:</strong> Pandas, Selenium, Javascript, Data structure and algorithm, OS</li>
+            <li><strong>Other Skills:</strong> Team Collaboration, Agile/Scrum, Continuous Learning</li>
+            <li><strong>Developer Tools:</strong> Visual Studio, VI editor, SonarLint, PyCharm, Bitbucket, Spyder, MySql, Github, Jira, Phpmyadmin</li>
+            <li><strong>Certifications:</strong> Azure Cloud Associate</li>
+        </ul>
+    </div>
+
+    <div class="section education">
+        <h2>EDUCATION</h2>
+        <div class="entry">
+            <div class="details">
+                <ul>
+                    <li><strong>Bachelor of Technology</strong></li>
+                    <ul>
+                        <li>Computer Science & Engineering from Rajasthan Technical University - Kota, Rajasthan</li>
+
+                    </ul>
+                </ul>
+            </div>
+            <div class="date"><strong>08/2017 - 07/2021</strong></div>   
+        </div>
+        <div class="entry" style="margin-top:-30px;">
+            <div class="details">
+                <ul>
+                    <li><strong>Intermediate</strong></li>
+                    <ul>
+                        <li>Science from Tagore Bharti Senior Secondary School - Jaipur, Rajasthan</li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="date"><strong>07/2015 - 07/2016</strong></div>
+        </div>
+        
+    </div>
+
+    <div class="section projects">
+        <h2>PROJECTS</h2>
+        <ul>
+            <li><strong>Url Shortener</strong> 
+                <ul>
+                    <li>A personal project based on Python Django framework that converts large URLs into short, unique links.</li>
+                    <li><strong>Technologies:</strong> Python, Django, HTML, CSS, JavaScript, MySQL, RestAPI, Git, Github</li>
+                </ul>
+            </li>
+            
+            <li><strong>Online Compiler</strong> 
+                <ul>
+                    <li>An online compiler based on the Linux operating system where users can run code in available languages, save it for future reference, and share a unique link.</li>
+                    <li><strong>Technologies:</strong>Python, Django, Jquery, MySql, RestAPI, Cloud</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section awards">
+        <h2>Awards</h2>
+        <ul>
+            <li>Special Acheivement Award - TCS</li>
+            <li>Employee of the Month Award - TCS</li>
+            <li>On the spot Award - TCS</li>
+            
+            
+        </ul>
+    </div>
+
+
+
+</div>
+
+<!-- Sticky Download Button -->
+<a href="#" class="download-btn" onclick="downloadPDF()">Download Resume</a>
+
+<script>
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const element = document.getElementById('resume');
+        
+        html2canvas(element).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const imgWidth = 210;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save('Chetan_Prajapat_Resume_9057024736.pdf');
+        });
+    }
+</script>
+
 </body>
 </html>
